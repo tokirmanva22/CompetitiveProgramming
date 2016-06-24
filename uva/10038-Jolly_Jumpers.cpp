@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	int n;
-	cin >> n;
+	
 
 	while(cin>>n)
 	{
@@ -34,9 +34,9 @@ int main()
 		}
 	}
 	if(joly)
-		cout << "joly" << endl;
+		cout << "Jolly" << endl;
 	else
-		cout << "not joly" << endl;
+		cout << "Not jolly" << endl;
 
 
 
