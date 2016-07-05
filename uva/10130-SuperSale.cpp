@@ -14,6 +14,7 @@ struct objects{
 	{
 		return a.P > b.P;
 	}
+	lld knapsack[1010][35]  = {0};
 
 int main()
 {
@@ -23,54 +24,41 @@ int main()
 	for(lld f = 0 ; f < T ; f++)
 	{
 
-	cin >> N;
-	objects a[N+1];
-	for(lld i = 1; i <= N ; i++)
-	{
-		cin >> a[i].P >> a[i].W ;
-	}
-	sort(a, a + N +1, compare);
-	lld G, MaxBagSize = -111111;
-	cin >> G;
-	lld peopleCapacity[G + 1];
-	for(lld i = 0; i < G; i++)
-	{
-		cin >> peopleCapacity[i];
-		if(MaxBagSize < peopleCapacity[i])
-			MaxBagSize = peopleCapacity[i];
-
-	}
-
-	lld knapsack[N+1][MaxBagSize+1] ;
-	for(lld i = 0 ; i <= N ; i++)
-		for(lld j = 0; j <= MaxBagSize ; j++)
+		cin >> N;
+		objects a[N+1];
+		for(lld i = 1; i <= N ; i++)
 		{
-			knapsack[i][j] = 0;
-
+			cin >> a[i].P >> a[i].W ;
 		}
+		//sort(a+1, a + N + 1, compare);
+		// for(lld i = 1; i <= N ; i++)
+		// {
+		// 	cout << a[i].P << " "<< a[i].W << "  " << endl ;
+		// }
+		lld G, MaxBagSize ;		
+		lld sum = 0;
 
-	for(lld i = 1 ; i <= N ; i++)
-		for(lld j = 1; j <= MaxBagSize ; j++)
+		for(lld i = 1 ; i <= N ; i++){
+			for(lld j = 0; j <= 30 ; j++)
+			{
+
+				if(j >= a[i].W)
+					knapsack[i][j] = max(knapsack[i-1][j], a[i].P + knapsack[i-1][j - a[i].W]);
+				 else
+				 	knapsack[i][j] = knapsack[i-1][j];
+				
+			}
+			
+		}
+		 
+
+		cin >> G;
+		for(lld m = 0; m < G; m++)
 		{
-
-			if(j > a[i].W)
-				knapsack[i][j] = max(knapsack[i-1][j], a[i].P + knapsack[i-1][j - a[i].W]);
-			else
-				knapsack[i][j] = knapsack[i-1][j];
-
+			cin >> MaxBagSize;	
+			sum += knapsack[N][MaxBagSize];
 		}
-
-	
-		
-	lld sum = 0;
-	for (lld i = 0; i < G; ++i)
-	{
-		sum += knapsack[N][peopleCapacity[i]];
+		cout << sum << endl;
 	}
-
-	cout << sum << endl;
-
-	}
-
 	return 0;
 }
