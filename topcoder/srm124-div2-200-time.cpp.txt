@@ -1,0 +1,16 @@
+public class Time{
+
+
+	public static String whatTime(int second){
+	 
+	 int H=0,M=0,S=0,Htemp,Mtemp;
+	 H = second /3600;
+	 Htemp = second % 3600;
+	 M = Htemp / 60;
+	 Mtemp = Htemp % 60;
+	 S = Mtemp;
+	 return (H+":" + M+ ":" + S );	
+	
+	}
+
+}
