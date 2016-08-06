@@ -9,13 +9,13 @@
  
 using namespace std;
 
-	 map<string , string > id; 
+	 map<string , int> id; 
 
 
 int totalFriend(string a){
 	string w = a;
 	int tF = 0;
-	while(id[w] != "")
+	while(id[w])
 	{
 		w = id[w];
 		tF++;
@@ -26,7 +26,7 @@ int totalFriend(string a){
 string parent(string a){
 	string w = a;
 	
-	while(id[w] != "")
+	while(id[w])
 	{
 		w = id[w];
 		
@@ -61,7 +61,10 @@ int main () {
 			cin >> s1 >> s2;
 			id.clear();
 			union1(s1, s2);
+			if(parent(s1) != parent(s2))
 			cout << totalFriend(s1) + totalFriend(s2) << endl;
+			else
+				cout << totalFriend(s1) << endl;
 
 		}		
 	}
