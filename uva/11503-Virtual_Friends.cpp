@@ -9,38 +9,38 @@
  
 using namespace std;
 
-	 map<string , int> id; 
+	 map<string , int> id;                                           
 
 
-int totalFriend(string a){
-	string w = a;
-	int tF = 0;
-	while(id[w])
-	{
-		w = id[w];
-		tF++;
-	}
-	return tF;
-}
+// int totalFriend(string a){
+// 	string w = a;
+// 	int tF = 0;
+// 	while(id[w])
+// 	{
+// 		w = id[w];
+// 		tF++;
+// 	}
+// 	return tF;
+// }
 
-string parent(string a){
-	string w = a;
+// string parent(string a){
+// 	string w = a;
 	
-	while(id[w])
-	{
-		w = id[w];
+// 	while(id[w])
+// 	{
+// 		w = id[w];
 		
-	}
-	return w;
-}
+// 	}
+// 	return w;
+// }
 
-void union1(string a, string b)
-{
+// void union1(string a, string b)
+// {
 
-	string root_a = parent(a);
-	string root_b = parent(b);
-	id[root_a] = root_b;
-}
+// 	string root_a = parent(a);
+// 	string root_b = parent(b);
+// 	id[root_a] = root_b;
+// }
 
 
  
