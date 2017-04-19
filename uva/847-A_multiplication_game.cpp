@@ -2,19 +2,27 @@
 
 using namespace std;
 
+long long int n;
+
+int game1(int p)
+{
+    if(p > n)
+        return 1;
+    if(game1(p*2) == 1 || game1(p*3) == 1 || game1(p*4) == 1 || game1(p*5) == 1 || game1(p*6)==1 \
+       || game1(p*7) == 1 || game1(p*8) == 1 || game1(p*9) == 1)
+        return 0;
+    return 1;
+}
+
 int main()
 {
 
     long long int n;
     while(cin >> n)
     {
-        int p = 1, count = 0;
-        while(p <= n)
-        {
-            p = p * 9;
-            count++;
-        }
-        if(count % 2 != 0)
+
+
+        if(!game1(1))
             cout << "Stan wins." << endl;
         else
             cout << "Ollie wins." << endl;
