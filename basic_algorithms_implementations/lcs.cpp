@@ -8,7 +8,7 @@ char A[maxC], B[maxC];
 int dp[maxC][maxC];
 bool visited[maxC][maxC];
 int lenA, lenB;
-int a1, a2;
+
 string ans;
 
 
@@ -16,8 +16,9 @@ int calcLCS(int i, int j)
 {
 	if(A[i] == '\0' || B[j] == '\0')
 		return 0;
-	
-	if(visited[i][j]) return dp[i][j];
+	if(dp[i][j] != -1)
+		return dp[i][j];
+//	if(visited[i][j]) return dp[i][j];
 
 
 	int answer = 0;
@@ -27,13 +28,12 @@ int calcLCS(int i, int j)
 	else
 	{
 		
-		a1 = calcLCS(i+1, j);
-		a2 = calcLCS(i, j+1);
-
+	        int a1 = calcLCS(i+1, j);
+		int a2 = calcLCS(i, j+1); 
 		answer = max(a1, a2);
 	}
 
-	visited[i][j] = true;
+	//visited[i][j] = true;
 	dp[i][j] = answer;
 
 	return dp[i][j];
@@ -72,6 +72,7 @@ void printallLCS(int i , int j)
 	{	
 	
 		cout << ans << endl;
+		ans = "";
 		return;
 
 	}	
@@ -104,9 +105,9 @@ void printallLCS(int i , int j)
 int main()
 {
 
-	memset(dp, 0, sizeof(dp[0][0]) * maxC * maxC );
+	memset(dp,-1 , sizeof(dp));
 	memset(visited, false , sizeof(visited[0][0]) * maxC * maxC);
-	scanf("%s%s", A, B);	
+	scanf("%s %s", A, B);	
 	lenA = strlen(A);
 	lenB = strlen(B);
 	cout << calcLCS(0, 0) << endl ;
