@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int a[100], s[300+1];
+
+
+int main()
+{
+	initialize();	
+	int n;
+	cin >> n;
+	for(int i = 0 ; i < n ; i++)
+		cin >> a[i];
+
+	create(0, 0 , n);
+	for(int i = 0 ; i < 3n ; i++)
+		cout << i << " " << s[i] << endl;
+
+    return 0;
+}
+
+void initialize()
+{
+	//for(int )
+}
+
+int create(int node , int L ,int R)
+{
+	int mid;
+	if(L == R)
+		return s[node] = a[L];
+
+    if(L > R)
+    	return ;
+
+    mid = (L + R) / 2;
+    int r1, r2;
+
+    r1 = create(2*node+1, L , mid);
+    r2 = create(2*node+2, mid+1, R);
+
+    return s[node] = r1 + r2;
+
+}

@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 
+#define mx 100001
+
 
 using namespace std;
 
-#define mx 100001
 
 int arr[mx];
 int tree[mx * 3];
@@ -44,6 +45,8 @@ int query(int node, int b, int e, int i , int j)
 
 void update(int node, int b, int e, int i, int newvalue)
 {
+	//here index i represents position at array arr
+	//newvalue is the value to put there
 	if(i > e or i < b)
 		return;
 	if(b >= i and e <= i)
@@ -71,9 +74,9 @@ int main()
 	init(1, 1, n);
 
 	update(1, 1, n, 2, 0);
-	cout << query(1, 1, n ,1, 3) << endl;
+	cout << query(1, 1, n ,1, 7) << endl;
 	update(1, 1, n, 2, 2);
-	cout << query(1, 1, n, 2, 2) << endl;
+	cout << query(1, 1, n, 1, 5) << endl;
 
 
 
