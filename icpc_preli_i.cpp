@@ -18,6 +18,7 @@ int bigmod(int a , int b, int M)
     return x;
 }
 
+
 void g(int k)
 {
 	if(k == n)
