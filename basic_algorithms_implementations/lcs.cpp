@@ -104,6 +104,10 @@ void printallLCS(int i , int j)
 
 int main()
 {
+// 	make it fast
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
 
 	memset(dp,-1 , sizeof(dp));
 	memset(visited, false , sizeof(visited[0][0]) * maxC * maxC);
